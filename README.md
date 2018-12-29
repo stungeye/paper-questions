@@ -1,3 +1,3 @@
-# Paper Question Sheet
+# Paper Question Sheets
 
 For math and music.
