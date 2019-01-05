@@ -49,6 +49,14 @@ After much battle with Heroku's auto-recognized default NodeJS buildpack I switc
 
 Here's how I deployed from the CLI. These instructions assume that you have the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed.
 
+Added `heroku-postbuild` to the `package.json` scripts section:
+
+    "scripts": {
+        "dev": "parcel index.html",
+        "build": "parcel build index.html",
+        "heroku-postbuild": "parcel build index.html"
+    },
+
 From the command line:
 
     heroku login
@@ -67,7 +75,7 @@ Open the `static.json` file and configure heroku-buildpack-static to host the `i
 And back at the CLI:
 
     git add .
-    git -m "Added a static.json config file for heroku-buildpack-static."
+    git -m "Added parcel as a postbuild step to package.json plus a static.json config file for heroku-buildpack-static."
     git push heroku master
     heroku open
 
