@@ -35,6 +35,42 @@ To bundle-up a production distribution, run:
 
     parcel build index.html
 
+## Heroku Deployment
+
+This was a battle, but I won. ⚔️
+
+Our Heroku build requirements:
+
+* Must recognized NPM package.json config and install required modules.
+* Must run Parcel to bundle the app.
+* Must deploy an HTTP server to host bundled app.
+
+After much battle with Heroku's auto-recognized default NodeJS buildpack I switched to a custom buildpack pipeline. I used the official nodejs buildpack and the experimental [static HTML/JS app buildpack](https://github.com/heroku/heroku-buildpack-static). Their [getting started guide](https://gist.github.com/hone/24b06869b4c1eca701f9).
+
+Here's how I deployed from the CLI. These instructions assume that you have the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed.
+
+From the command line:
+
+    heroku login
+    heroku create
+    heroku buildpacks:clear
+    heroku buildpacks:add heroku/nodejs
+    heroku buildpacks:add https://github.com/hone/heroku-buildpack-static
+    touch static.json
+
+Open the static.json file and configure heroku-buildpack-static to host the `index.html` in Parcel's `dist` folder. The static.json file should look like this:
+
+    {
+        "root": "dist/"
+    }
+
+And back at the CLI:
+
+    git add .
+    git -m "Added a static.json config file for heroku-buildpack-static."
+    git push heroku master
+    heroku open
+
 ## UNLICENSE
 
 This is free and unencumbered software released into the public domain. See UNLICENSE for details.
