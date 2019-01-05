@@ -42,10 +42,10 @@ This was a battle, but I won. ⚔️
 Our Heroku build requirements:
 
 * Must recognized NPM package.json config and install required modules.
-* Must run Parcel to bundle the app.
-* Must deploy an HTTP server to host bundled app.
+* Must run Parcel to bundle the app to the `dist` folder.
+* Must deploy an HTTP server to host bundled app from the `dist` folder.
 
-After much battle with Heroku's auto-recognized default NodeJS buildpack I switched to a custom buildpack pipeline. I used the official nodejs buildpack and the experimental [static HTML/JS app buildpack](https://github.com/heroku/heroku-buildpack-static). Their [getting started guide](https://gist.github.com/hone/24b06869b4c1eca701f9).
+After much battle with Heroku's auto-recognized default NodeJS buildpack I switched to a custom buildpack pipeline. I used the official nodejs buildpack and the experimental [static HTML/JS app buildpack](https://github.com/heroku/heroku-buildpack-static); see the [static buildpack getting started guide](https://gist.github.com/hone/24b06869b4c1eca701f9) for details.
 
 Here's how I deployed from the CLI. These instructions assume that you have the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed.
 
@@ -58,7 +58,7 @@ From the command line:
     heroku buildpacks:add https://github.com/hone/heroku-buildpack-static
     touch static.json
 
-Open the static.json file and configure heroku-buildpack-static to host the `index.html` in Parcel's `dist` folder. The static.json file should look like this:
+Open the `static.json` file and configure heroku-buildpack-static to host the `index.html` in Parcel's `dist` folder. The `static.json` file should look like this:
 
     {
         "root": "dist/"
