@@ -1,0 +1,9 @@
+/* Gallery is a grid with 300px columns. At full width (1230px) there are four columns. */
+#questions {
+    display: grid;
+
+    /* Auto fill the columns based on how many will fit. */
+    grid-template-columns: 375px 375px 375px; 
+
+    grid-gap: 10px;
+}
