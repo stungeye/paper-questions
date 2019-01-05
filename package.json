@@ -60,7 +60,7 @@
     "lint-test": "eslint . && jest --no-cache ./* ",
     "dev": "parcel index.html",
     "build": "parcel build index.html",
-    "heroku-postbuild": "parcel build src/index.html"
+    "heroku-postbuild": "parcel build index.html --out-dir src"
   },
   "eslintConfig": {
     "parser": "babel-eslint",
