@@ -12,6 +12,7 @@
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-preset-env": "^1.7.0",
+    "cryptiles": ">=4.1.2",
     "eslint": "^5.6.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
@@ -19,31 +20,15 @@
     "now": "^13.0.0",
     "parcel-bundler": "^1.11.0",
     "parcel-plugin-clean-dist": "0.0.6",
-    "cryptiles": ">=4.1.2",
     "surge": "^0.20.1"
   },
   "babel": {
     "presets": [
-      [
-        "env",
-        {
-          "targets": [
-            {
-              "node": "current"
-            }
-          ]
-        }
-      ]
-    ],
-    "plugins": [
-      [
-        "transform-regenerator"
-      ]
+      "env"
     ]
   },
   "scripts": {
-    "lint": "eslint .",
-    "lint-test": "eslint . && jest --no-cache ./* ",
+    "lint": "eslint --ignore-pattern '/dist/*' .",
     "dev": "parcel index.html",
     "build": "parcel build index.html",
     "heroku-postbuild": "parcel build index.html",
