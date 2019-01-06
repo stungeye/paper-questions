@@ -99,6 +99,15 @@ And added an entry in the `package.json` scripts section:
         "surge": "surge"
     }
 
+The version of the `cryptiles` package required by `surge` triggered a security notice, so included it in the dev dependencies with an explicit version in `package.json`:
+
+  "devDependencies": {
+    "parcel-bundler": "^1.11.0",
+    "parcel-plugin-clean-dist": "0.0.6",
+    "cryptiles": ">=4.1.2",
+    "surge": "^0.20.1"
+  }
+
 I then ran parcel's build and the surge CLI:
 
     npm run build
