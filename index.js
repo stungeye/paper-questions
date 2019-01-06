@@ -1,6 +1,5 @@
 import ABCJS from 'abcjs';
 
-const abc = '|C2D2E2|';
 const scaler = 2;
 
 ABCJS.renderAbc('paper-1', '|C2D2E2|', { scale: scaler });
