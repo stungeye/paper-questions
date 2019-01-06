@@ -35,9 +35,9 @@ To bundle-up a production distribution, run:
 
     parcel build index.html
 
-## Heroku Deployment
+## [Heroku](https://heroku.com) Deployment
 
-This was a battle, but I won. ⚔️
+This was a battle, but I won. ⚔️ [musical-bears.herokuapp.com](https://musical-bears.herokuapp.com/) ⚔️
 
 Our Heroku build requirements:
 
@@ -70,6 +70,59 @@ And back at the CLI:
     git -m "Added a static.json config file for heroku-buildpack-static."
     git push heroku master
     heroku open
+
+## [Surge](https://surge.sh) Deployment
+
+This was not a battle, but app must be locally built.
+
+🌊 [musical-bears.surge.sh](https://musical-bears.surge.sh/) 🌊
+
+With surge you can deploy any folder. When using a JS bunlder you need to build the app locally first, and then deploy with surge.
+
+I installed the surge CLI as a dev dependency to test it out:
+
+    npm install --save-dev surge
+
+And added an entry in the `package.json` scripts section:
+
+    "scripts": {
+        "dev": "parcel index.html",
+        "build": "parcel build index.html",
+        "surge": "surge"
+    }
+
+I then ran parcel's build and the surge CLI:
+
+    npm run build
+    npm run surge
+
+The first time through I was prompted to create an account.
+
+**Important:** The surge CLI will prompt for the project folder. Add parcel's `dist` folder to the end of the default path to ensure you're deploying the bundled app.
+
+## GitHub Pages Deployment
+
+Easy-peasy once again. I had to deploy as `paper-questions` because that's the name of the associated GitHub repo:
+
+📖 [stungeye.github.io/paper-questions/](https://stungeye.github.io/paper-questions/)  📖
+
+Install the `gp-pages` package as a development dependency:
+
+    npm install --save-dev gh-pages
+
+Update `package.json` with new scripts:
+
+    "scripts": {
+        "dev": "parcel index.html",
+        "build": "parcel build index.html",
+        "build-gh-pages": "parcel build index.html --public-url /paper-questions",
+        "deploy-gh-pages": "gh-pages -d dist"
+    }
+
+From the CLI:
+
+    npm run build-gh-pages
+    npm run deploy-gh-pages
 
 ## UNLICENSE
 
