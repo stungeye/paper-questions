@@ -124,6 +124,42 @@ From the CLI:
     npm run build-gh-pages
     npm run deploy-gh-pages
 
+## Zeit Now Deployment
+
+Currently not possible due to [/zeit/now-builders/issues/49](https://github.com/zeit/now-builders/issues/49). The `abcjs` music library uses git for one of it's dependencies and `now-builders` currently doesn't support this.
+
+Install the `now` package as a development dependency:
+
+    npm install --save-dev now
+
+Update `package.json` with `now` alias:
+
+    "scripts": {
+        "dev": "parcel index.html",
+        "build": "parcel build index.html",
+        "now": "now",
+        "now-build": "parcel build index.html"
+    }
+
+Create a `now.json` file:
+
+    {
+        "version": 2,
+        "name": "musical-bears",
+        "builds": [
+            { "src": "package.json", "use": "@now/static-build", "config": {"distDir": "dist"} }
+        ]
+    }
+
+Deploy from CLI:
+
+    rm -rf ./dist
+    npm run now
+
+The first time through I had to confirm my email address and click on a verification email. I had to rerun the above command after that to deploy.
+
+The `rm -rf ./dist` was required. Otherwise the `now` CLI tries to upload this folder.
+
 ## UNLICENSE
 
 This is free and unencumbered software released into the public domain. See UNLICENSE for details.
