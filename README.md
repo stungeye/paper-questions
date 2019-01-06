@@ -35,6 +35,8 @@ To bundle-up a production distribution, run:
 
     parcel build index.html
 
+Note that because `babel-core` is present as a dependency in `package.json` all [the JS will be transpiled automatically](https://parceljs.org/javascript.html#default-babel-transforms).
+
 ## [Heroku](https://heroku.com) Deployment
 
 This was a battle, but I won. ⚔️ [musical-bears.herokuapp.com](https://musical-bears.herokuapp.com/) ⚔️
