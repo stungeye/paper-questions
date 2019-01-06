@@ -124,13 +124,43 @@ From the CLI:
     npm run build-gh-pages
     npm run deploy-gh-pages
 
-## Zeit Now Deployment
 
-Currently not possible due to [/zeit/now-builders/issues/49](https://github.com/zeit/now-builders/issues/49). The `abcjs` music library uses git for one of it's dependencies and `now-builders` currently doesn't support this.
+## [Netlify](https://www.netlify.com) Deployment
+
+Coming soon.
+
+## [Zeit Now](https://zeit.co/now) Deployment (With Local Build)
+
+Problem free when deploying a local build.
+
+🎪 [musical-bears.now.sh/](https://musical-bears.now.sh/) 🎪
 
 Install the `now` package as a development dependency:
 
     npm install --save-dev now
+
+Update `package.json` with `now` alias:
+
+    "scripts": {
+        "dev": "parcel index.html",
+        "build": "parcel build index.html",
+        "now-from-dist": "now --name musical-bears deploy ./dist",
+        "now-alias": "now alias https://musical-bears.now.sh",
+    }
+
+Deploy from the CLI:
+
+    npm run build
+    npm run now-from-dist
+    npm run now-alias
+
+The default subdomain assigned by Zeit has a unique id in it; something like musical-bears-pvrgpxdmt.now.sh.
+
+The final command sets up a nicer alias for the install subdomain.
+
+## [Zeit Now](https://zeit.co/now) Deployment (With Remote Build)
+
+Currently not possible due to [/zeit/now-builders/issues/49](https://github.com/zeit/now-builders/issues/49). The `abcjs` music library uses git for one of it's dependencies and `now-builders` currently doesn't support this.
 
 Update `package.json` with `now` alias:
 

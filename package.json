@@ -68,6 +68,8 @@
     "build-gh-pages": "parcel build index.html --public-url /paper-questions",
     "deploy-gh-pages": "gh-pages -d dist",
     "now": "now",
+    "now-from-dist": "now --name musical-bears deploy ./dist",
+    "now-alias": "now alias https://musical-bears.now.sh",
     "now-build": "parcel build index.html"
   },
   "eslintConfig": {
@@ -89,7 +91,7 @@
       "import/no-default-export": "off"
     }
   },
-  "license": "MIT",
+  "license": "UNLICENSE",
   "dependencies": {
     "abcjs": "^5.6.1"
   }
