@@ -146,7 +146,22 @@ From the CLI:
 
 ## [Netlify](https://www.netlify.com) Deployment
 
-Coming soon.
+Super easy continuous deploymenting using their web dashboard:
+
+🔥 https://musical-bears.netlify.com/ 🔥
+
+Steps:
+
+* Login to Netlify dashboard.
+* Click "New Site From Git" button.
+* Auth your Github account and pick the repo you wish to deploy.
+* Setup the build steps:
+  * Build command: `npm run build`
+  * Publish directory: `dist`
+
+Once the site has been built I went into the Domain Management settings and changed the randomly assigned domain name to `musical-bears.netlify.com`.
+
+Looks like all of this can also be done from their CLI.
 
 ## [Zeit Now](https://zeit.co/now) Deployment (With Local Build)
 
